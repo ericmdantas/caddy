@@ -43,7 +43,7 @@ func loadConfigsUpToIncludingTLS(filename string, input io.Reader) ([]server.Con
 
 	// Iterate each server block and make a config for each one,
 	// executing the directives that were parsed in order up to the tls
-	// directive; this is because we must activate Let's Encrypt.
+	// directive; this is because we must activate Certbot.
 	for i, sb := range serverBlocks {
 		onces := makeOnces()
 		storages := makeStorages()
@@ -92,7 +92,7 @@ func loadConfigsUpToIncludingTLS(filename string, input io.Reader) ([]server.Con
 					storages[dir.name] = controller.ServerBlockStorage // persist for this server block
 				}
 
-				// Stop after TLS setup, since we need to activate Let's Encrypt before continuing;
+				// Stop after TLS setup, since we need to activate Certbot before continuing;
 				// it makes some changes to the configs that middlewares might want to know about.
 				if dir.name == "tls" {
 					lastDirectiveIndex = k
@@ -109,7 +109,7 @@ func loadConfigsUpToIncludingTLS(filename string, input io.Reader) ([]server.Con
 
 // loadConfigs reads input (named filename) and parses it, returning the
 // server configurations in the order they appeared in the input. As part
-// of this, it activates Let's Encrypt for the configs that are produced.
+// of this, it activates Certbot for the configs that are produced.
 // Thus, the returned configs are already optimally configured for HTTPS.
 func loadConfigs(filename string, input io.Reader) ([]server.Config, error) {
 	configs, serverBlocks, lastDirectiveIndex, err := loadConfigsUpToIncludingTLS(filename, input)
@@ -118,7 +118,7 @@ func loadConfigs(filename string, input io.Reader) ([]server.Config, error) {
 	}
 
 	// Now we have all the configs, but they have only been set up to the
-	// point of tls. We need to activate Let's Encrypt before setting up
+	// point of tls. We need to activate Certbot before setting up
 	// the rest of the middlewares so they have correct information regarding
 	// TLS configuration, if necessary. (this only appends, so our iterations
 	// over server blocks below shouldn't be affected)

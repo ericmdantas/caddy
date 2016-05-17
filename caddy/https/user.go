@@ -18,7 +18,7 @@ import (
 	"github.com/xenolf/lego/acme"
 )
 
-// User represents a Let's Encrypt user account.
+// User represents a Certbot user account.
 type User struct {
 	Email        string
 	Registration *acme.RegistrationResource
@@ -147,8 +147,8 @@ func getEmail(cfg server.Config, userPresent bool) string {
 		// Alas, we must bother the user and ask for an email address;
 		// if they proceed they also agree to the SA.
 		reader := bufio.NewReader(stdin)
-		fmt.Println("\nYour sites will be served over HTTPS automatically using Let's Encrypt.")
-		fmt.Println("By continuing, you agree to the Let's Encrypt Subscriber Agreement at:")
+		fmt.Println("\nYour sites will be served over HTTPS automatically using Certbot.")
+		fmt.Println("By continuing, you agree to the Certbot Subscriber Agreement at:")
 		fmt.Println("  " + saURL) // TODO: Show current SA link
 		fmt.Println("Please enter your email address so you can recover your account if needed.")
 		fmt.Println("You can leave it blank, but you'll lose the ability to recover your account.")
@@ -171,10 +171,10 @@ func getEmail(cfg server.Config, userPresent bool) string {
 // agreeing, pass false. It returns whether the user agreed or not.
 func promptUserAgreement(agreementURL string, changed bool) bool {
 	if changed {
-		fmt.Printf("The Let's Encrypt Subscriber Agreement has changed:\n  %s\n", agreementURL)
+		fmt.Printf("The Certbot Subscriber Agreement has changed:\n  %s\n", agreementURL)
 		fmt.Print("Do you agree to the new terms? (y/n): ")
 	} else {
-		fmt.Printf("To continue, you must agree to the Let's Encrypt Subscriber Agreement:\n  %s\n", agreementURL)
+		fmt.Printf("To continue, you must agree to the Certbot Subscriber Agreement:\n  %s\n", agreementURL)
 		fmt.Print("Do you agree to the terms? (y/n): ")
 	}
 

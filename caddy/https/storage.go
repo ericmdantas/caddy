@@ -8,7 +8,7 @@ import (
 )
 
 // storage is used to get file paths in a consistent,
-// cross-platform way for persisting Let's Encrypt assets
+// cross-platform way for persisting Certbot assets
 // on the file system.
 var storage = Storage(filepath.Join(assets.Path(), "letsencrypt"))
 

@@ -10,7 +10,7 @@ and [Android](https://github.com/mholt/caddy/wiki/Running-Caddy-on-Android).
 It is a capable alternative to other popular and easy to use web servers. 
 ([@caddyserver](https://twitter.com/caddyserver) on Twitter)
 
-The most notable features are HTTP/2, [Let's Encrypt](https://letsencrypt.org) 
+The most notable features are HTTP/2, [Certbot](https://letsencrypt.org) 
 support, Virtual Hosts, TLS + SNI, and easy configuration with a 
 [Caddyfile](https://caddyserver.com/docs/caddyfile). In development, you usually 
 put one Caddyfile with each site. In production, Caddy serves HTTPS by default 

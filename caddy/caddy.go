@@ -102,7 +102,7 @@ func Start(cdyfile Input) (err error) {
 	caddyfile = cdyfile
 	caddyfileMu.Unlock()
 
-	// load the server configs (activates Let's Encrypt)
+	// load the server configs (activates Certbot)
 	configs, err := loadConfigs(path.Base(cdyfile.Path()), bytes.NewReader(cdyfile.Body()))
 	if err != nil {
 		return err
@@ -305,7 +305,7 @@ func CaddyfileFromPipe(f *os.File) (Input, error) {
 		// produces an error when calling Stat(). But Unix will
 		// make one either way, which is why we also check that
 		// bitmask.
-		// BUG: Reading from stdin after this fails (e.g. for the let's encrypt email address) (OS X)
+		// BUG: Reading from stdin after this fails (e.g. for the Certbot email address) (OS X)
 		confBody, err := ioutil.ReadAll(f)
 		if err != nil {
 			return nil, err

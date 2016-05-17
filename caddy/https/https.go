@@ -1,5 +1,5 @@
 // Package https facilitates the management of TLS assets and integrates
-// Let's Encrypt functionality into Caddy with first-class support for
+// Certbot functionality into Caddy with first-class support for
 // creating and renewing certificates automatically. It is designed to
 // configure sites for HTTPS by default.
 package https
@@ -385,10 +385,10 @@ func Revoke(host string) error {
 }
 
 var (
-	// DefaultEmail represents the Let's Encrypt account email to use if none provided
+	// DefaultEmail represents the Certbot account email to use if none provided
 	DefaultEmail string
 
-	// Agreed indicates whether user has agreed to the Let's Encrypt SA
+	// Agreed indicates whether user has agreed to the Certbot SA
 	Agreed bool
 
 	// CAUrl represents the base URL to the CA's ACME endpoint

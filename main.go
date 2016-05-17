@@ -21,11 +21,11 @@ import (
 func init() {
 	caddy.TrapSignals()
 	setVersion()
-	flag.BoolVar(&https.Agreed, "agree", false, "Agree to Let's Encrypt Subscriber Agreement")
+	flag.BoolVar(&https.Agreed, "agree", false, "Agree to Certbot Subscriber Agreement")
 	flag.StringVar(&https.CAUrl, "ca", "https://acme-v01.api.letsencrypt.org/directory", "Certificate authority ACME server")
 	flag.StringVar(&conf, "conf", "", "Configuration file to use (default="+caddy.DefaultConfigFile+")")
 	flag.StringVar(&cpu, "cpu", "100%", "CPU cap")
-	flag.StringVar(&https.DefaultEmail, "email", "", "Default Let's Encrypt account email address")
+	flag.StringVar(&https.DefaultEmail, "email", "", "Default Certbot account email address")
 	flag.DurationVar(&caddy.GracefulTimeout, "grace", 5*time.Second, "Maximum duration of graceful shutdown")
 	flag.StringVar(&caddy.Host, "host", caddy.DefaultHost, "Default host")
 	flag.BoolVar(&caddy.HTTP2, "http2", true, "Use HTTP/2")
